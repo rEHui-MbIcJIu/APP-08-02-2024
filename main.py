@@ -89,9 +89,10 @@ class MainApp(MDApp):
         headers = {
             'Content-Type': 'application/json'
         }
-        api_response = requests.post(self.url + "/send_list", headers=headers, data=json.dumps(body))
-        # response = json.loads(api_response.text) - load response or whatever
-        toast("Запрос выполнен")
+        if self.data != None or self.data != []:
+            api_response = requests.post(self.url + "/send_list", headers=headers, data=json.dumps(body))
+            # response = json.loads(api_response.text) - load response or whatever
+            toast("Запрос выполнен")
 
 
 MainApp().run()
